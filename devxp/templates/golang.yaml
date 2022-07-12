@@ -81,6 +81,8 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
+            allowedOwners:
+              - devxp-tech
 
     - title: Infrastructure
       properties:
