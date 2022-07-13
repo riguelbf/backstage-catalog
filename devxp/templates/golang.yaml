@@ -27,6 +27,7 @@ spec:
         component_id:
           title: Name
           type: string
+          pattern: "^([a-z0-9\\-]+)$"
           description: Unique name of the component
           ui:field: EntityNamePicker
           ui:autofocus: true
