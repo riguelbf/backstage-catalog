@@ -1,8 +1,8 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: golang-template
-  title: Golang Template
+  name: golang-template-helm
+  title: Golang Template with Helm
   description: Create a new GoLang Website
 
   tags:
@@ -11,6 +11,7 @@ metadata:
     - recommended
     - website
     - component
+    - helm
 spec:
   owner: group:sre-team
   type: component
@@ -112,7 +113,7 @@ spec:
       action: fetch:template
       cookiecutterCompat: true
       input:
-        url: https://github.com/devxp-tech/template-app-go
+        url: https://github.com/devxp-tech/template-app-go-helm
         #copyWithoutRender:
         #  - .github/workflows/*
         values:
@@ -148,7 +149,7 @@ spec:
       if: ${{ parameters.kube == true }}
       input:
         targetPath: ./kube
-        url: https://github.com/devxp-tech/backstage-catalog/tree/main/devxp/skeleton/kubernetes/apps/kustomize
+        url: https://github.com/devxp-tech/backstage-catalog/tree/main/devxp/skeleton/kubernetes/apps/helm
         values:
           component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
