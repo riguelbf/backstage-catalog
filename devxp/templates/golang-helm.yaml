@@ -156,7 +156,7 @@ spec:
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
 
-    - id: kube-pr
+    - id: gitops
       name: "Open PR in GitOps Repository"
       action: publish:github:pull-request
       if: ${{ parameters.kube == true }}
@@ -186,10 +186,10 @@ spec:
 
   output:
     links:
-      - title: Go to Repository
+      - title: Repository
         url: ${{ steps.publish.output.remoteUrl }}
-      - title: Go to GitOps Pull Request
-        url: ${{ steps.kube-pr.output.remoteUrl }}
-      - title: Open in catalog
+      - title: GitOps Pull Request
+        url: ${{ steps.gitops.output.remoteUrl }}
+      - title: Open Catalog
         icon: catalog
         entityRef: ${{ steps.register.output.entityRef }}
