@@ -10,7 +10,7 @@ metadata:
     backstage.io/kubernetes-id: ${{values.component_id}}
 spec:
   gateways:
-  - istio-system/istio-gateway
+  - istio-system/istio-ingressgateway
   hosts:
   - ${{values.component_id}}.diegoluisi.eti.br
   http:
