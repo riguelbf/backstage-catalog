@@ -113,7 +113,7 @@ spec:
             - prd
         autoscaling:
           title: Autoscaling
-          description: Checking this will also enable autoscaling
+          description: Autoscaling Properties
           properties:
             enabled:
               title: enabled
@@ -122,48 +122,49 @@ spec:
               default: true
             minReplicas:
               title: minReplicas
-              description: minReplicas
-              type: string
+              description: Set min Replicas
+              type: integer
               default: 1
             maxReplicas:
               title: maxReplicas
-              description: maxReplicas
-              type: string
+              description: Set max Replicas
+              type: integer
               default: 2
             targetCPUUtilizationPercentage:
               title: targetCPUUtilizationPercentage
-              description: targetCPUUtilizationPercentage
-              type: string
+              description: Set target CPU Utilization Percentage
+              type: integer
               default: 80
         resources:
           title: Resources
+          description: Resources Properties
           properties:
             requests:
               title: requests
-              description: requests
+              description: Set requests
               properties:
                 memory:
                   title: memory
-                  description: memory
+                  description: Set Memory requests
                   type: string
                   default: 64Mi
                 cpu:
                   title: cpu
-                  description: cpu
+                  description: Set CPU requests
                   type: string
                   default: 50m
             limits:
               title: limits
-              description: limits
+              description: Set limits
               properties:
                 memory:
                   title: memory
-                  description: memory
+                  description: Set Memory limits
                   type: string
                   default: 128Mi
                 cpu:
                   title: cpu
-                  description: cpu
+                  description: Set CPU limits
                   type: string
                   default: 100m
 
