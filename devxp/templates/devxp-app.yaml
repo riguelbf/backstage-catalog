@@ -137,7 +137,6 @@ spec:
               default: 80
         resources:
           title: Resources
-          description: Deployment resources
           properties:
             requests:
               title: requests
@@ -152,7 +151,21 @@ spec:
                   title: cpu
                   description: cpu
                   type: string
+                  default: 50m
+            limits:
+              title: limits
+              description: limits
+              properties:
+                memory:
+                  title: memory
+                  description: memory
+                  type: string
                   default: 128Mi
+                cpu:
+                  title: cpu
+                  description: cpu
+                  type: string
+                  default: 100m
 
         dryRun:
           title: Only perform a dry run, don't publish anything
