@@ -158,7 +158,7 @@ spec:
       if: ${{ parameters.kube == true }}
       input:
         targetPath: ./kube
-        url: https://github.com/devxp-tech/backstage-catalog/tree/main/devxp/skeleton/kubernetes/apps/helm
+        url: https://github.com/devxp-tech/backstage-catalog/tree/main/devxp/skeleton/kubernetes/apps/devxp-app
         values:
           component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
@@ -202,6 +202,3 @@ spec:
       - title: Open Catalog
         icon: catalog
         entityRef: ${{ steps.register.output.entityRef }}
-
-
-
