@@ -135,6 +135,24 @@ spec:
               description: targetCPUUtilizationPercentage
               type: string
               default: 80
+        resources:
+          title: Resources
+          description: Deployment resources
+          properties:
+            requests:
+              title: requests
+              description: requests
+              properties:
+                memory:
+                  title: memory
+                  description: memory
+                  type: string
+                  default: 64Mi
+                cpu:
+                  title: cpu
+                  description: cpu
+                  type: string
+                  default: 128Mi
 
         dryRun:
           title: Only perform a dry run, don't publish anything
