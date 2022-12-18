@@ -13,10 +13,10 @@ helmCharts:
       repository: diegoluisi/${{values.component_id}}
       tag: latest
     autoscaling:
-      enabled: ${{values.autoscaling.enabled}}
-      minReplicas: ${{values.autoscaling.minReplicas}}
-      maxReplicas: ${{values.autoscaling.maxReplicas}}
-      targetCPUUtilizationPercentage: ${{values.autoscaling.targetCPUUtilizationPercentage}}
+      enabled: ${{values.autoscaling}}
+      minReplicas: ${{values.minReplicas}}
+      maxReplicas: ${{values.maxReplicas}}
+      targetCPUUtilizationPercentage: ${{values.targetCPUUtilizationPercentage}}
     resources:
       requests:
         memory: ${{values.resources.requests.memory}}

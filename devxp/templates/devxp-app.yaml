@@ -221,6 +221,10 @@ spec:
           description: ${{ parameters.description }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
+          autoscaling:  ${{ parameters.autoscaling.enabled }}
+          minReplicas: ${{ parameters.autoscaling.minReplicas }}
+          maxReplicas: ${{ parameters.autoscaling.maxReplicas }}
+          targetCPUUtilizationPercentage: ${{ parameters.autoscaling.targetCPUUtilizationPercentage }}
 
     - id: gitops
       name: "Open PR in GitOps Repository"
