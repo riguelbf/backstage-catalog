@@ -114,8 +114,28 @@ spec:
         autoscaling:
           title: Autoscaling
           description: Checking this will also enable autoscaling
-          type: boolean
-          default: true
+          properties:
+            enabled:
+              title: enabled
+              description: Enable autoscaling
+              type: boolean
+              default: true
+            minReplicas:
+              title: minReplicas
+              description: minReplicas
+              type: string
+              default: 1
+            maxReplicas:
+              title: maxReplicas
+              description: maxReplicas
+              type: string
+              default: 2
+            targetCPUUtilizationPercentage:
+              title: targetCPUUtilizationPercentage
+              description: targetCPUUtilizationPercentage
+              type: string
+              default: 80
+
         dryRun:
           title: Only perform a dry run, don't publish anything
           type: boolean
