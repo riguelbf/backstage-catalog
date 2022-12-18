@@ -225,6 +225,8 @@ spec:
           minReplicas: ${{ parameters.autoscaling.minReplicas }}
           maxReplicas: ${{ parameters.autoscaling.maxReplicas }}
           targetCPUUtilizationPercentage: ${{ parameters.autoscaling.targetCPUUtilizationPercentage }}
+          resources.requests.memory: ${{ parameters.resources.requests.memory }}
+          resources.requests.cpu: ${{ parameters.resources.requests.cpu }}
 
     - id: gitops
       name: "Open PR in GitOps Repository"
