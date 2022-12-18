@@ -19,8 +19,8 @@ helmCharts:
       targetCPUUtilizationPercentage: ${{values.targetCPUUtilizationPercentage}}
     resources:
       requests:
-        memory: ${{values.resources.requests.memory}}
-        cpu: ${{values.resources.requests.cpu}}
+        memory: ${{values.requests_memory}}
+        cpu: ${{values.requests_cpu}}
       limits:
-        memory: ${{values.resources.limits.memory}}
-        cpu: ${{values.resources.limits.cpu}}
+        memory: ${{values.limits_memory}}
+        cpu: ${{values.limits_cpu}}
