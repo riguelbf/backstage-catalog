@@ -1,9 +1,9 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: golang-template-helm
-  title: Golang Template with Helm
-  description: Create a new GoLang Website
+  name: devxp-app
+  title: DevXP Tech Template web Application
+  description: Create a new Web Application
 
   tags:
     - go
@@ -36,6 +36,15 @@ spec:
           title: Description
           type: string
           description: Help others understand what this website is for.
+        language:
+          title: Language
+          description: 'Application Language'
+          type: string
+          default: golang
+          enum:
+            - golang
+            - python
+            - php
         system:
           title: System
           type: string
@@ -113,7 +122,7 @@ spec:
       action: fetch:template
       cookiecutterCompat: true
       input:
-        url: https://github.com/devxp-tech/template-app-go-helm
+        url: https://github.com/devxp-tech/template-${{ parameters.language }}
         #copyWithoutRender:
         #  - .github/workflows/*
         values:
