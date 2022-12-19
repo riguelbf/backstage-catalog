@@ -118,7 +118,7 @@ spec:
               type: array
               items:
                 type: string
-                default: development
+                # default: development
                 enum:
                   - development
                   - staging
