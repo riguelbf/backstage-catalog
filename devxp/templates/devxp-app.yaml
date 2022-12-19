@@ -106,7 +106,7 @@ spec:
             status:
               title: enabled
               description: Checking this will also create Kubernetes Deployment
-              type: array
+              type: boolean
               default: true
 
         env:
