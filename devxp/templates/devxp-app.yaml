@@ -98,11 +98,16 @@ spec:
     - title: Deployment Parameters
       description: Set Kubernetes Deployment parameterts
       properties:
-        kube:
+
+        kubernetes:
           title: Enable Kubernetes Deployment
           description: Checking this will also create Kubernetes Deployment
-          type: boolean
-          default: true
+          properties:
+            status:
+              title: status
+              description: Checking this will also create Kubernetes Deployment
+              type: boolean
+              default: true
 
         env:
           title: Environment
@@ -223,12 +228,12 @@ spec:
           - team: ${{ parameters.owner }}
             access: push
 
-    - id: fetch-kube
+    - id: fetch-kubernetes
       name: Fetch Kubernetes Templates
       action: fetch:template
-      if: ${{ parameters.kube == true }}
+      if: ${{ parameters.kubernetes.status == true }}
       input:
-        targetPath: ./kube
+        targetPath: ./kubernetes
         url: https://github.com/devxp-tech/backstage-catalog/tree/main/devxp/skeleton/kubernetes/apps/devxp-app
         values:
           component_id: ${{ parameters.component_id }}
@@ -248,7 +253,7 @@ spec:
     - id: gitops
       name: "Open PR in GitOps Repository"
       action: publish:github:pull-request
-      if: ${{ parameters.kube == true }}
+      if: ${{ parameters.kubernetes.status == true }}
       input:
         repoUrl: github.com?repo=gitops&owner=devxp-tech
         branchName: create-${{ parameters.component_id }}
@@ -256,7 +261,7 @@ spec:
         description: |
           # New project: ${{ parameters.component_id }}
           ${{ parameters.description if parameters.description }}
-        sourcePath: kube
+        sourcePath: kubernetes
         targetPath: apps
 
     - id: register
