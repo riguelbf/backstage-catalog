@@ -95,8 +95,8 @@ spec:
             allowedOwners:
               - devxp-tech
               - diegoluisi
-            allowedRepos:
-              - ${{ parameters.component_id }}
+            # allowedRepos:
+            #   - ${{ parameters.component_id }}
 
     - title: Deployment Parameters
       description: Set Kubernetes Deployment parameterts
@@ -121,7 +121,7 @@ spec:
               type: array
               items:
                 type: string
-                # default: development
+                default: development
                 enum:
                   - development
                   - staging
