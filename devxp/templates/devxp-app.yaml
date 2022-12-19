@@ -99,7 +99,7 @@ spec:
       description: Set Kubernetes Deployment parameterts
       properties:
         kube:
-          title: Deployment Parameters
+          title: Enable Kubernetes Deployment
           description: Checking this will also create Kubernetes Deployment
           type: boolean
           default: true
