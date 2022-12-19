@@ -94,6 +94,8 @@ spec:
               - github.com
             allowedOwners:
               - devxp-tech
+            allowedRepos:
+              - ${{ parameters.component_id }}
 
     - title: Deployment Parameters
       description: Set Kubernetes Deployment parameterts
