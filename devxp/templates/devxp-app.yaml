@@ -195,6 +195,7 @@ spec:
   steps:
     - id: template
       name: Fetch Application Template
+      if: ${{ parameters.env.name == development }}
       action: fetch:template
       cookiecutterCompat: true
       input:
@@ -209,7 +210,7 @@ spec:
           owner: ${{ parameters.owner }}
           lifecycle: ${{ parameters.lifecycle }}
           type: ${{ parameters.type }}
-          env: ${{ parameters.env}}
+          env: dev
 
     - id: publish
       name: Publish Application
