@@ -103,7 +103,7 @@ spec:
           title: Enable Kubernetes Deployment
           description: Checking this will also create Kubernetes Deployment
           properties:
-            name:
+            status:
               title: enabled
               description: Checking this will also create Kubernetes Deployment
               type: array
