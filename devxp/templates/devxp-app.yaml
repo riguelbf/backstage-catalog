@@ -195,7 +195,7 @@ spec:
   steps:
     - id: template
       name: Fetch Application Template
-      if: ${{ parameters.env.name == development }}
+      if: ${{ parameters.env.name == "development" }}
       action: fetch:template
       cookiecutterCompat: true
       input:
