@@ -94,6 +94,7 @@ spec:
               - github.com
             allowedOwners:
               - devxp-tech
+              - diegoluisi
             allowedRepos:
               - ${{ parameters.component_id }}
 
