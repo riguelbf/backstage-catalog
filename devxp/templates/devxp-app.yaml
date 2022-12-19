@@ -104,7 +104,7 @@ spec:
           description: Checking this will also create Kubernetes Deployment
           properties:
             status:
-              title: status
+              title: enabled
               description: Checking this will also create Kubernetes Deployment
               type: boolean
               default: true
