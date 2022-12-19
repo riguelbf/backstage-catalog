@@ -232,7 +232,7 @@ spec:
     - id: fetch-kubernetes
       name: Fetch Kubernetes Templates
       action: fetch:template
-      if: ${{ parameters.kubernetes.status == true && parameters.env.name == development }}
+      if: ${{ parameters.kubernetes.status == true && parameters.env.name == "development" }}
       input:
         targetPath: ./kubernetes
         url: https://github.com/devxp-tech/backstage-catalog/tree/main/devxp/skeleton/kubernetes/apps/devxp-app
