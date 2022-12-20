@@ -192,7 +192,7 @@ spec:
           description: Network Settings
           properties:
             enabled:
-              title: enabled
+              title: Ingress Enabled
               description: Ingress Enabled
               type: boolean
               default: true
@@ -209,6 +209,24 @@ spec:
               description: Set Port Number
               type: integer
               default: 8080
+
+        misc:
+          title: Misc Configuration
+          description: Misc Configuration
+          properties:
+            deploy:
+              title: Deployment Type
+              description: ArgoCD Rollout or Deployment
+              type: string
+              default: Rollout
+              enum:
+                - Rollout
+                - Deployment
+            quota:
+              title: Quota Enabled
+              description: Enabled Resources Quota
+              type: boolean
+              default: true
 
         dryRun:
           title: Only perform a dry run, don't publish anything
