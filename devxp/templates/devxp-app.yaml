@@ -187,6 +187,29 @@ spec:
                   type: string
                   default: 100m
 
+        networking:
+          title: Networking
+          description: Network Settings
+          properties:
+            enabled:
+              title: enabled
+              description: Ingress Enabled
+              type: boolean
+              default: true
+            service:
+              title: Service Type
+              description: Service Type
+              type: string
+              default: ClusterIP
+              enum:
+                - ClusterIP
+                - LoadBalancer
+            port:
+              title: Port
+              description: Set Port Number
+              type: integer
+              default: 8080
+
         dryRun:
           title: Only perform a dry run, don't publish anything
           type: boolean
