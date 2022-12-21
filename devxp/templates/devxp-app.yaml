@@ -244,7 +244,7 @@ spec:
                 - LoadBalancer
             port:
               title: Port
-              description: Set Port Number
+              description: Application Port
               type: integer
               default: 8080
 
