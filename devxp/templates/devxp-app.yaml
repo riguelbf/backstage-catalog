@@ -272,13 +272,21 @@ spec:
             sa:
               title: Service Account
               description: Create a service account
-              type: boolean
-              default: true
+              properties:
+                enabled:
+                  title: Service Account
+                  description: Create a Service Account
+                  type: boolean
+                  default: true
             quota:
               title: Quota Enabled
               description: Enabled Resources Quota
-              type: boolean
-              default: true
+              properties:
+                enabled:
+                  title: Enable Quota
+                  description: Create Resources Quota
+                  type: boolean
+                  default: true
 
         dryRun:
           title: Only perform a dry run, don't publish anything
