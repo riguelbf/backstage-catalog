@@ -87,7 +87,6 @@ spec:
         repoUrl:
           title: Repository Location
           type: string
-          pattern: "^([a-z0-9\\-]+)$"
           ui:field: RepoUrlPicker
           ui:options:
             allowedHosts:
