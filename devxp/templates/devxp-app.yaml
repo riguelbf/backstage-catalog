@@ -187,6 +187,31 @@ spec:
                   type: string
                   default: 100m
 
+        probe:
+          title: Health Check
+          description: Health Check Properties
+          properties:
+            enabled:
+              title: enabled
+              description: Enable Probe
+              type: boolean
+              default: true
+            livenessProbe:
+              title: Liveness Probe
+              description: Set Liveness Probe
+              properties:
+                path:
+                  title: path
+                  description: Application Path
+                  type: string
+                  default: /health-check/liveness
+                port:
+                  title: port
+                  description: Application Port
+                  type: integer
+                  default: 8080
+
+
         networking:
           title: Networking
           description: Network Settings
@@ -222,6 +247,11 @@ spec:
               enum:
                 - Rollout
                 - Deployment
+            sa:
+              title: Service Account
+              description: Create a service account
+              type: boolean
+              default: true
             quota:
               title: Quota Enabled
               description: Enabled Resources Quota
