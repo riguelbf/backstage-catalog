@@ -255,11 +255,20 @@ spec:
             deploy:
               title: Deployment Type
               description: ArgoCD Rollout or Deployment
-              type: string
-              default: Rollout
-              enum:
-                - Rollout
-                - Deployment
+              properties:
+                enabled:
+                  title: Argo Rollout
+                  description: Enabled Argo Rollout
+                  type: boolean
+                  default: true
+                strategy:
+                  title: Argo Rollout Strategy
+                  description: Set Deployment Strategy
+                  type: string
+                  default: Canary
+                  enum:
+                    - BlueGreen
+                    - Canary
             sa:
               title: Service Account
               description: Create a service account
