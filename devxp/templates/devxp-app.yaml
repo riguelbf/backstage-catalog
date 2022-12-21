@@ -210,7 +210,20 @@ spec:
                   description: Application Port
                   type: integer
                   default: 8080
-
+            readinessProbe:
+              title: Readiness Probe
+              description: Set Readiness Probe
+              properties:
+                path:
+                  title: path
+                  description: Application Path
+                  type: string
+                  default: /health-check/readiness
+                port:
+                  title: port
+                  description: Application Port
+                  type: integer
+                  default: 8080
 
         networking:
           title: Networking
