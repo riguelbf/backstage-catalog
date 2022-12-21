@@ -248,45 +248,41 @@ spec:
               type: integer
               default: 8080
 
-        misc:
-          title: Misc Configuration
-          description: Misc Configuration
+        deploy:
+          title: Deployment Type
+          description: ArgoCD Rollout or Deployment
           properties:
-            deploy:
-              title: Deployment Type
-              description: ArgoCD Rollout or Deployment
-              properties:
-                enabled:
-                  title: Argo Rollout
-                  description: Enabled Argo Rollout
-                  type: boolean
-                  default: true
-                strategy:
-                  title: Argo Rollout Strategy
-                  description: Set Deployment Strategy
-                  type: string
-                  default: Canary
-                  enum:
-                    - BlueGreen
-                    - Canary
-            sa:
+            enabled:
+              title: Argo Rollout
+              description: Enabled Argo Rollout
+              type: boolean
+              default: true
+            strategy:
+              title: Argo Rollout Strategy
+              description: Set Deployment Strategy
+              type: string
+              default: Canary
+              enum:
+                - BlueGreen
+                - Canary
+        sa:
+          title: Service Account
+          description: Create a service account
+          properties:
+            enabled:
               title: Service Account
-              description: Create a service account
-              properties:
-                enabled:
-                  title: Service Account
-                  description: Create a Service Account
-                  type: boolean
-                  default: true
-            quota:
-              title: Quota Enabled
-              description: Enabled Resources Quota
-              properties:
-                enabled:
-                  title: Enable Quota
-                  description: Create Resources Quota
-                  type: boolean
-                  default: true
+              description: Create a Service Account
+              type: boolean
+              default: true
+        quota:
+          title: Quota Enabled
+          description: Enabled Resources Quota
+          properties:
+            enabled:
+              title: Enable Quota
+              description: Create Resources Quota
+              type: boolean
+              default: true
 
         dryRun:
           title: Only perform a dry run, don't publish anything
