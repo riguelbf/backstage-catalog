@@ -1,0 +1,19 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: AI-Auth
+  description: Backstage
+  tags:
+    - AI-Auth
+    - backend
+  links:
+    - url: https://AI-Auth.diegoluisi.eti.br
+      title: System
+      icon: dashboard
+  annotations:
+    github.com/project-slug: devxp-tech/AI-Auth
+    backstage.io/kubernetes-namespace: AI-Auth
+spec:
+  type: system
+  owner: group:devxp-tech
+  domain: backend
