@@ -4,7 +4,6 @@ metadata:
   name: devxp-app
   title: DevXP Web Application
   description: Create a new Web Application
-
   tags:
     - go
     - golang
@@ -88,6 +87,7 @@ spec:
         repoUrl:
           title: Repository Location
           type: string
+          pattern: "^([a-z0-9\\-]+)$"
           ui:field: RepoUrlPicker
           ui:options:
             allowedHosts:
