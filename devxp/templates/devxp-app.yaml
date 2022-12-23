@@ -264,6 +264,7 @@ spec:
               enum:
                 - BlueGreen
                 - Canary
+
         sa:
           title: Service Account
           description: Create a service account
@@ -273,6 +274,7 @@ spec:
               description: Create a Service Account
               type: boolean
               default: true
+
         quota:
           title: Quota Enabled
           description: Enabled Resources Quota
@@ -303,12 +305,12 @@ spec:
                   properties:
                     cpu:
                       title: cpu
-                      description: Set CPU Requests
+                      description: Set CPU Limits
                       type: integer
                       default: 2
                     memory:
                       title: memory
-                      description: Set Memory Requests
+                      description: Set Memory Limits
                       type: string
                       default: 2Gi
 
