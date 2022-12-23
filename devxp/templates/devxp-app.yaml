@@ -127,190 +127,190 @@ spec:
                   uniqueItems: true
                   ui:widget: checkboxes
 
-        autoscaling:
-          title: Autoscaling
-          description: Autoscaling Properties
-          properties:
-            enabled:
-              title: enabled
-              description: Enable autoscaling
-              type: boolean
-              default: true
-            minReplicas:
-              title: minReplicas
-              description: Set min Replicas
-              type: integer
-              default: 1
-            maxReplicas:
-              title: maxReplicas
-              description: Set max Replicas
-              type: integer
-              default: 2
-            targetCPUUtilizationPercentage:
-              title: targetCPUUtilizationPercentage
-              description: Set target CPU Utilization Percentage
-              type: integer
-              default: 80
-
-        resources:
-          title: Resources
-          description: Resources Properties
-          properties:
-            requests:
-              title: requests
-              description: Set requests
+            autoscaling:
+              title: Autoscaling
+              description: Autoscaling Properties
               properties:
-                memory:
-                  title: memory
-                  description: Set Memory requests
-                  type: string
-                  default: 64Mi
-                cpu:
-                  title: cpu
-                  description: Set CPU requests
-                  type: string
-                  default: 50m
-            limits:
-              title: limits
-              description: Set limits
-              properties:
-                memory:
-                  title: memory
-                  description: Set Memory limits
-                  type: string
-                  default: 128Mi
-                cpu:
-                  title: cpu
-                  description: Set CPU limits
-                  type: string
-                  default: 100m
-
-        probe:
-          title: Health Check
-          description: Health Check Properties
-          properties:
-            enabled:
-              title: enabled
-              description: Enable Probe
-              type: boolean
-              default: true
-            livenessProbe:
-              title: Liveness Probe
-              description: Set Liveness Probe
-              properties:
-                path:
-                  title: path
-                  description: Application Path
-                  type: string
-                  default: /health-check/liveness
-                port:
-                  title: port
-                  description: Application Port
-                  type: integer
-                  default: 8080
-            readinessProbe:
-              title: Readiness Probe
-              description: Set Readiness Probe
-              properties:
-                path:
-                  title: path
-                  description: Application Path
-                  type: string
-                  default: /health-check/readiness
-                port:
-                  title: port
-                  description: Application Port
-                  type: integer
-                  default: 8080
-
-        networking:
-          title: Networking
-          description: Network Settings
-          properties:
-            enabled:
-              title: Ingress Enabled
-              description: Ingress Enabled
-              type: boolean
-              default: true
-            service:
-              title: Service Type
-              description: Service Type
-              type: string
-              default: ClusterIP
-              enum:
-                - ClusterIP
-                - LoadBalancer
-            port:
-              title: Port
-              description: Application Port
-              type: integer
-              default: 8080
-
-        deploy:
-          title: Deployment Type
-          description: ArgoCD Rollout or Deployment
-          properties:
-            enabled:
-              title: Argo Rollout
-              description: Enabled Argo Rollout
-              type: boolean
-              default: true
-            strategy:
-              title: Argo Rollout Strategy
-              description: Set Deployment Strategy
-              type: string
-              default: Canary
-              enum:
-                - BlueGreen
-                - Canary
-
-        sa:
-          title: Service Account
-          description: Create a service account
-          properties:
-            enabled:
-              title: Service Account
-              description: Create a Service Account
-              type: boolean
-              default: true
-
-        quota:
-          title: Quota Enabled
-          description: Enabled Resources Quota
-          properties:
-            enabled:
-              title: Enable Quota
-              description: Create Resources Quota
-              type: boolean
-              default: true
-            requests:
-              title: Requests
-              description: Set Requests
-              properties:
-                cpu:
-                  title: cpu
-                  description: Set CPU Requests
+                enabled:
+                  title: enabled
+                  description: Enable autoscaling
+                  type: boolean
+                  default: true
+                minReplicas:
+                  title: minReplicas
+                  description: Set min Replicas
                   type: integer
                   default: 1
-                memory:
-                  title: memory
-                  description: Set Memory Requests
-                  type: string
-                  default: 1Gi
-            limits:
-              title: Limits
-              description: Set Limits
-              properties:
-                cpu:
-                  title: cpu
-                  description: Set CPU Limits
+                maxReplicas:
+                  title: maxReplicas
+                  description: Set max Replicas
                   type: integer
                   default: 2
-                memory:
-                  title: memory
-                  description: Set Memory Limits
+                targetCPUUtilizationPercentage:
+                  title: targetCPUUtilizationPercentage
+                  description: Set target CPU Utilization Percentage
+                  type: integer
+                  default: 80
+
+            resources:
+              title: Resources
+              description: Resources Properties
+              properties:
+                requests:
+                  title: requests
+                  description: Set requests
+                  properties:
+                    memory:
+                      title: memory
+                      description: Set Memory requests
+                      type: string
+                      default: 64Mi
+                    cpu:
+                      title: cpu
+                      description: Set CPU requests
+                      type: string
+                      default: 50m
+                limits:
+                  title: limits
+                  description: Set limits
+                  properties:
+                    memory:
+                      title: memory
+                      description: Set Memory limits
+                      type: string
+                      default: 128Mi
+                    cpu:
+                      title: cpu
+                      description: Set CPU limits
+                      type: string
+                      default: 100m
+
+            probe:
+              title: Health Check
+              description: Health Check Properties
+              properties:
+                enabled:
+                  title: enabled
+                  description: Enable Probe
+                  type: boolean
+                  default: true
+                livenessProbe:
+                  title: Liveness Probe
+                  description: Set Liveness Probe
+                  properties:
+                    path:
+                      title: path
+                      description: Application Path
+                      type: string
+                      default: /health-check/liveness
+                    port:
+                      title: port
+                      description: Application Port
+                      type: integer
+                      default: 8080
+                readinessProbe:
+                  title: Readiness Probe
+                  description: Set Readiness Probe
+                  properties:
+                    path:
+                      title: path
+                      description: Application Path
+                      type: string
+                      default: /health-check/readiness
+                    port:
+                      title: port
+                      description: Application Port
+                      type: integer
+                      default: 8080
+
+            networking:
+              title: Networking
+              description: Network Settings
+              properties:
+                enabled:
+                  title: Ingress Enabled
+                  description: Ingress Enabled
+                  type: boolean
+                  default: true
+                service:
+                  title: Service Type
+                  description: Service Type
                   type: string
-                  default: 2Gi
+                  default: ClusterIP
+                  enum:
+                    - ClusterIP
+                    - LoadBalancer
+                port:
+                  title: Port
+                  description: Application Port
+                  type: integer
+                  default: 8080
+
+            deploy:
+              title: Deployment Type
+              description: ArgoCD Rollout or Deployment
+              properties:
+                enabled:
+                  title: Argo Rollout
+                  description: Enabled Argo Rollout
+                  type: boolean
+                  default: true
+                strategy:
+                  title: Argo Rollout Strategy
+                  description: Set Deployment Strategy
+                  type: string
+                  default: Canary
+                  enum:
+                    - BlueGreen
+                    - Canary
+
+            sa:
+              title: Service Account
+              description: Create a service account
+              properties:
+                enabled:
+                  title: Service Account
+                  description: Create a Service Account
+                  type: boolean
+                  default: true
+
+            quota:
+              title: Quota Enabled
+              description: Enabled Resources Quota
+              properties:
+                enabled:
+                  title: Enable Quota
+                  description: Create Resources Quota
+                  type: boolean
+                  default: true
+                requests:
+                  title: Requests
+                  description: Set Requests
+                  properties:
+                    cpu:
+                      title: cpu
+                      description: Set CPU Requests
+                      type: integer
+                      default: 1
+                    memory:
+                      title: memory
+                      description: Set Memory Requests
+                      type: string
+                      default: 1Gi
+                limits:
+                  title: Limits
+                  description: Set Limits
+                  properties:
+                    cpu:
+                      title: cpu
+                      description: Set CPU Limits
+                      type: integer
+                      default: 2
+                    memory:
+                      title: memory
+                      description: Set Memory Limits
+                      type: string
+                      default: 2Gi
 
     - title: Infrastructure Parameters
       description: Set Infrastrucuture Resources
