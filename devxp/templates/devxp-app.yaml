@@ -325,6 +325,24 @@ spec:
               type: boolean
               default: true
 
+            bucket:
+              title: enabled
+              description: Create S3 Bucket
+              properties:
+                enabled:
+                  title: Enable S3 Bucket
+                  description: Create S3 Bucket
+                  type: boolean
+                  default: true
+                acl:
+                  title: Set S3 ACL
+                  description: Set S3 ACL
+                  type: string
+                  default: private
+                  enum:
+                    - private
+                    - public
+
         dryRun:
           title: Only perform a dry run, don't publish anything
           type: boolean
