@@ -323,11 +323,11 @@ spec:
               title: enabled
               description: Checking this will also create Infrastructure Resorces
               type: boolean
-              default: true
+              default: false
 
-            bucket:
+            Bucket:
               title: AWS S3 Bucket
-              description: Set S3 Bucket Parameters
+              description: An Bucket is a managed resource that represents an AWS S3 Bucket.
               properties:
                 enabled:
                   title: Enable S3 Bucket
