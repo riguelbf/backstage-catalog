@@ -283,19 +283,19 @@ spec:
               type: boolean
               default: true
             requests:
-            title: Requests
-            description: Set Requestscd
-            properties:
-              cpu:
-                title: cpu
-                description: Set CPU Requests
-                type: integer
-                default: 1
-              memory:
-                title: memory
-                description: Set Memory Requests
-                type: string
-                default: 1Gi
+              title: Requests
+              description: Set Requestscd
+              properties:
+                cpu:
+                  title: cpu
+                  description: Set CPU Requests
+                  type: integer
+                  default: 1
+                memory:
+                  title: memory
+                  description: Set Memory Requests
+                  type: string
+                  default: 1Gi
 
         dryRun:
           title: Only perform a dry run, don't publish anything
