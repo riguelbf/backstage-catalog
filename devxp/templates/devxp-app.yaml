@@ -284,35 +284,34 @@ spec:
               description: Create Resources Quota
               type: boolean
               default: true
+            requests:
+              title: Requests
+              description: Set Requests
               properties:
-                requests:
-                  title: Requests
-                  description: Set Requests
-                  properties:
-                    cpu:
-                      title: cpu
-                      description: Set CPU Requests
-                      type: integer
-                      default: 1
-                    memory:
-                      title: memory
-                      description: Set Memory Requests
-                      type: string
-                      default: 1Gi
-                limits:
-                  title: Limits
-                  description: Set Limits
-                  properties:
-                    cpu:
-                      title: cpu
-                      description: Set CPU Limits
-                      type: integer
-                      default: 2
-                    memory:
-                      title: memory
-                      description: Set Memory Limits
-                      type: string
-                      default: 2Gi
+                cpu:
+                  title: cpu
+                  description: Set CPU Requests
+                  type: integer
+                  default: 1
+                memory:
+                  title: memory
+                  description: Set Memory Requests
+                  type: string
+                  default: 1Gi
+            limits:
+              title: Limits
+              description: Set Limits
+              properties:
+                cpu:
+                  title: cpu
+                  description: Set CPU Limits
+                  type: integer
+                  default: 2
+                memory:
+                  title: memory
+                  description: Set Memory Limits
+                  type: string
+                  default: 2Gi
 
         dryRun:
           title: Only perform a dry run, don't publish anything
