@@ -313,11 +313,11 @@ spec:
                       default: 2Gi
 
     - title: Infrastructure Parameters
-      description: Set Infrastrucuture Resources
+      description: Create Infrastrucuture Resources
       properties:
         infra:
-          title: Enable Infrastructure Deployment
-          description: Checking this will also create Kubernetes Deployment
+          title: Create Infrastructure Resources
+          description: Checking this will also create Infrastrcuture Resources
           properties:
             status:
               title: enabled
@@ -402,7 +402,7 @@ spec:
   steps:
     - id: template
       name: Fetch Application Template
-      if: ${{ parameters.env.name == "development" }}
+      if: ${{ parameters.kubernetes.status == true }}
       action: fetch:template
       cookiecutterCompat: true
       input:
@@ -439,7 +439,7 @@ spec:
     - id: fetch-kubernetes
       name: Fetch Kubernetes Templates
       action: fetch:template
-      if: ${{ parameters.kubernetes.status == true && parameters.env.name == "development" }}
+      if: ${{ parameters.kubernetes.status == true }}
       input:
         targetPath: ./kubernetes
         url: https://github.com/devxp-tech/backstage-catalog/tree/main/devxp/skeleton/kubernetes/apps/devxp-app
