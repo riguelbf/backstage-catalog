@@ -333,7 +333,7 @@ spec:
                   title: Enable S3 Bucket
                   description: Create S3 Bucket
                   type: boolean
-                  default: true
+                  default: false
                 acl:
                   title: Set S3 ACL
                   description: Set S3 ACL
@@ -364,31 +364,31 @@ spec:
                   description: allocatedStorage
                   type: integer
                   default: 10
-                acl:
-                  title: Set S3 ACL
-                  description: Set S3 ACL
+                dbInstanceClass:
+                  title: Set RDSInstance dbInstanceClass
+                  description: Set RDSInstance dbInstanceClass
                   type: string
                   default: private
                   enum:
-                    - private
-                    - public
+                    - db.t2.small
+                    - db.t2.medium
                 engine:
                   title: engine
-                  description: Set engine
+                  description: Set RDSInstance engine
                   type: string
                   default: mysql
                   enum:
                     - mysql
                     - postgres
                 region:
-                  title: Set region
+                  title: Set RDSInstance region
                   description: Set region
                   type: string
                   default: us-east-1
                   enum:
                     - us-east-1
                 publiclyAccessible:
-                  title: Enable publiclyAccessible
+                  title: Enable RDSInstance publiclyAccessible
                   description: publiclyAccessible
                   type: boolean
                   default: true
