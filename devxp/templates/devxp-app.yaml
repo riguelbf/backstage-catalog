@@ -326,8 +326,8 @@ spec:
               default: true
 
             bucket:
-              title: enabled
-              description: Create S3 Bucket
+              title: AWS S3 Bucket
+              description: Set S3 Bucket Parameters
               properties:
                 enabled:
                   title: Enable S3 Bucket
