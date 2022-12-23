@@ -342,6 +342,57 @@ spec:
                   enum:
                     - private
                     - public
+                locationConstraint:
+                  title: Set S3 locationConstraint
+                  description: Set S3 locationConstraint
+                  type: string
+                  default: us-east-1
+                  enum:
+                    - us-east-1
+
+            RDSInstance:
+              title: AWS RDSInstance
+              description: Set RDSInstance Parameters
+              properties:
+                enabled:
+                  title: Enable RDSInstance
+                  description: Create RDSInstance
+                  type: boolean
+                  default: true
+                allocatedStorage:
+                  title: allocatedStorage
+                  description: allocatedStorage
+                  type: integer
+                  default: 10
+                acl:
+                  title: Set S3 ACL
+                  description: Set S3 ACL
+                  type: string
+                  default: private
+                  enum:
+                    - private
+                    - public
+                engine:
+                  title: engine
+                  description: Set engine
+                  type: string
+                  default: mysql
+                  enum:
+                    - mysql
+                    - postgres
+                region:
+                  title: Set region
+                  description: Set region
+                  type: string
+                  default: us-east-1
+                  enum:
+                    - us-east-1
+                publiclyAccessible:
+                  title: Enable publiclyAccessible
+                  description: publiclyAccessible
+                  type: boolean
+                  default: true
+
 
         dryRun:
           title: Only perform a dry run, don't publish anything
