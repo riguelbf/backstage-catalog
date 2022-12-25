@@ -368,7 +368,7 @@ spec:
                   title: Set RDSInstance dbInstanceClass
                   description: Set RDSInstance dbInstanceClass
                   type: string
-                  default: private
+                  default: db.t2.small
                   enum:
                     - db.t2.small
                     - db.t2.medium
@@ -393,7 +393,9 @@ spec:
                   type: boolean
                   default: true
 
-
+    - title: Dry Run
+      description: Only perform a dry run, don't publish anything
+      properties:
         dryRun:
           title: Only perform a dry run, don't publish anything
           type: boolean
