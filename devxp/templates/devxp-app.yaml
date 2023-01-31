@@ -435,6 +435,8 @@ spec:
         collaborators:
           - team: sre-team
             access: maintain
+          - team: dba-team
+            access: write
           - team: ${{ parameters.owner }}
             access: push
 
