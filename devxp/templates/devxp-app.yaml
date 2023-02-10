@@ -432,6 +432,7 @@ spec:
         repoUrl: ${{ parameters.repoUrl }}
         defaultBranch: main
         repoVisibility: public
+        protectEnforceAdmins: false
         collaborators:
           - team: sre-team
             access: maintain
@@ -439,6 +440,14 @@ spec:
             access: write
           - team: ${{ parameters.owner }}
             access: push
+        topics:
+          - ${{ parameters.lifecycle }}
+          - ${{ parameters.language }}
+          - ${{ parameters.owner }}
+          - ${{ parameters.system }}
+        gitAuthorName: ":robot: backstage-bot"
+        gitAuthorEmail: bot@devxp-tech.io
+        gitCommitMessage: ":robot: First Commit"
 
     - id: fetch-kubernetes
       name: Fetch Kubernetes Templates
