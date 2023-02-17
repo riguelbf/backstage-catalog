@@ -409,8 +409,8 @@ spec:
       cookiecutterCompat: true
       input:
         url: https://github.com/devxp-tech/template-${{ parameters.language }}
-        #copyWithoutRender:
-        #  - .github/workflows/*
+        copyWithoutTemplating:
+          - .github/workflows/*
         values:
           component_id: ${{ parameters.component_id }}
           system: ${{ parameters.system }}
