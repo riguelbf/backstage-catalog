@@ -13,7 +13,7 @@ helmCharts:
       repository: ghcr.io/devxp-tech/${{values.component_id}}
       tag: latest
     autoscaling:
-      enabled: ${{values.autoscaling.autoscaling}}
+      enabled: ${{values.autoscaling.enabled}}
       minReplicas: ${{values.autoscaling.minReplicas}}
       maxReplicas: ${{values.autoscaling.maxReplicas}}
       targetCPUUtilizationPercentage: ${{values.autoscaling.targetCPUUtilizationPercentage}}
