@@ -420,6 +420,11 @@ spec:
           lifecycle: ${{ parameters.lifecycle }}
           type: ${{ parameters.type }}
           env: dev
+          autoscaling.enabled: ${{ parameters.autoscaling.enabled }}
+          autoscaling.enabled: ${{ parameters.autoscaling.minReplicas }}
+          autoscaling.enabled: ${{ parameters.autoscaling.maxReplicas }}
+          autoscaling.enabled: ${{ parameters.autoscaling.targetCPUUtilizationPercentage }}
+
 
     - id: publish
       name: Publish Application
