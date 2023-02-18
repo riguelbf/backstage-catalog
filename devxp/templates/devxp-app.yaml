@@ -194,6 +194,14 @@ spec:
                   description: Ingress Enabled
                   type: boolean
                   default: true
+                domain:
+                  title: Service Domain
+                  description: Service Domain
+                  type: string
+                  default: devxp-tech.io
+                  enum:
+                    - devxp-tech.io
+                    - diegoluisi.eti.br
                 service:
                   title: Service Type
                   description: Service Type
@@ -434,6 +442,7 @@ spec:
               cpu: ${{ parameters.kubernetes.resources.limits.cpu }}
           networking:
             enabled: ${{ parameters.kubernetes.networking.enabled }}
+            domain: ${{ parameters.kubernet.networking.domain }}
             service: ${{ parameters.kubernetes.networking.service }}
             port: ${{ parameters.kubernetes.networking.port }}
           probe:
@@ -513,6 +522,7 @@ spec:
               cpu: ${{ parameters.kubernetes.resources.limits.cpu }}
           networking:
             enabled: ${{ parameters.kubernetes.networking.enabled }}
+            domain: ${{ parameters.kubernet.networking.domain }}
             service: ${{ parameters.kubernetes.networking.service }}
             port: ${{ parameters.kubernetes.networking.port }}
           probe:

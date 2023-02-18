@@ -5,13 +5,14 @@ resources:
 helmCharts:
 - name: devxp-app
   releaseName: devxp-app
-  version: 0.1.59
+  version: 0.1.60
   repo: https://devxp-tech.github.io/helm-charts
   valuesInline:
     name: ${{values.component_id}}
     image:
       repository: ghcr.io/devxp-tech/${{values.component_id}}
       tag: latest
+    domain: ${{ values.networking.domain }}
     autoscaling:
       enabled: ${{ values.autoscaling.enabled }}
       minReplicas: ${{ values.autoscaling.minReplicas }}
