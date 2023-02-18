@@ -12,7 +12,6 @@ helmCharts:
     image:
       repository: ghcr.io/devxp-tech/${{values.component_id}}
       tag: latest
-    domain: ${{ values.networking.domain }}
     autoscaling:
       enabled: ${{ values.autoscaling.enabled }}
       minReplicas: ${{ values.autoscaling.minReplicas }}
@@ -27,6 +26,7 @@ helmCharts:
         cpu: ${{ values.resources.limits.cpu }}
     networking:
       enabled: ${{ values.networking.enabled }}
+      domain: ${{ values.networking.domain }}
       service: ${{ values.networking.service }}
       port: ${{ values.networking.port }}
     probe:
