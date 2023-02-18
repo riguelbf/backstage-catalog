@@ -185,6 +185,29 @@ spec:
                       type: string
                       default: 100m
 
+            networking:
+              title: Networking
+              description: Network Settings
+              properties:
+                enabled:
+                  title: Ingress Enabled
+                  description: Ingress Enabled
+                  type: boolean
+                  default: true
+                service:
+                  title: Service Type
+                  description: Service Type
+                  type: string
+                  default: ClusterIP
+                  enum:
+                    - ClusterIP
+                    - LoadBalancer
+                port:
+                  title: Port
+                  description: Application Port
+                  type: integer
+                  default: 8080
+
             probe:
               title: Health Check
               description: Health Check Properties
@@ -222,29 +245,6 @@ spec:
                       description: Application Port
                       type: integer
                       default: 8080
-
-            networking:
-              title: Networking
-              description: Network Settings
-              properties:
-                enabled:
-                  title: Ingress Enabled
-                  description: Ingress Enabled
-                  type: boolean
-                  default: true
-                service:
-                  title: Service Type
-                  description: Service Type
-                  type: string
-                  default: ClusterIP
-                  enum:
-                    - ClusterIP
-                    - LoadBalancer
-                port:
-                  title: Port
-                  description: Application Port
-                  type: integer
-                  default: 8080
 
             deploy:
               title: Deployment Type
@@ -432,6 +432,30 @@ spec:
             limits:
               memory: ${{ parameters.kubernetes.resources.limits.memory }}
               cpu: ${{ parameters.kubernetes.resources.limits.cpu }}
+          networking:
+            enabled: ${{ parameters.kubernetes.networking.enabled }}
+            service: ${{ parameters.kubernetes.networking.service }}
+            port: ${{ parameters.kubernetes.networking.port }}
+          probe:
+            enabled: ${{ parameters.kubernetes.probe.enabled }}
+            livenessProbe:
+              path: ${{ parameters.kubernetes.probe.livenessProbe.path }}
+              port: ${{ parameters.kubernetes.probe.livenessProbe.port }}
+            readinessProbe:
+              path: ${{ parameters.kubernetes.probe.readinessProbe.path }}
+              port: ${{ parameters.kubernetes.probe.readinessProbe.port }}
+          deploy:
+            enabled: ${{ parameters.kubernetes.probe.enabled }}
+          sa:
+            enabled: ${{ parameters.kubernetes.sa.enabled }}
+          quota:
+            enabled: ${{ parameters.kubernetes.quota.enabled }}
+            requests:
+              memory: ${{ parameters.kubernetes.quota.requests.memory }}
+              cpu: ${{ parameters.kubernetes.quota.requests.cpu }}
+            limits:
+              memory: ${{ parameters.kubernetes.quota.limits.memory }}
+              cpu: ${{ parameters.kubernetes.quota.limits.cpu }}
 
 
     - id: publish
@@ -487,6 +511,30 @@ spec:
             limits:
               memory: ${{ parameters.kubernetes.resources.limits.memory }}
               cpu: ${{ parameters.kubernetes.resources.limits.cpu }}
+          networking:
+            enabled: ${{ parameters.kubernetes.networking.enabled }}
+            service: ${{ parameters.kubernetes.networking.service }}
+            port: ${{ parameters.kubernetes.networking.port }}
+          probe:
+            enabled: ${{ parameters.kubernetes.probe.enabled }}
+            livenessProbe:
+              path: ${{ parameters.kubernetes.probe.livenessProbe.path }}
+              port: ${{ parameters.kubernetes.probe.livenessProbe.port }}
+            readinessProbe:
+              path: ${{ parameters.kubernetes.probe.readinessProbe.path }}
+              port: ${{ parameters.kubernetes.probe.readinessProbe.port }}
+          deploy:
+            enabled: ${{ parameters.kubernetes.probe.enabled }}
+          sa:
+            enabled: ${{ parameters.kubernetes.sa.enabled }}
+          quota:
+            enabled: ${{ parameters.kubernetes.quota.enabled }}
+            requests:
+              memory: ${{ parameters.kubernetes.quota.requests.memory }}
+              cpu: ${{ parameters.kubernetes.quota.requests.cpu }}
+            limits:
+              memory: ${{ parameters.kubernetes.quota.limits.memory }}
+              cpu: ${{ parameters.kubernetes.quota.limits.cpu }}
 
     - id: gitops
       name: "Open PR in GitOps Repository"

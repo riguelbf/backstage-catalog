@@ -5,7 +5,7 @@ resources:
 helmCharts:
 - name: devxp-app
   releaseName: devxp-app
-  version: 0.1.39
+  version: 0.1.59
   repo: https://devxp-tech.github.io/helm-charts
   valuesInline:
     name: ${{values.component_id}}
@@ -13,14 +13,38 @@ helmCharts:
       repository: ghcr.io/devxp-tech/${{values.component_id}}
       tag: latest
     autoscaling:
-      enabled: ${{values.autoscaling.enabled}}
-      minReplicas: ${{values.autoscaling.minReplicas}}
-      maxReplicas: ${{values.autoscaling.maxReplicas}}
-      targetCPUUtilizationPercentage: ${{values.autoscaling.targetCPUUtilizationPercentage}}
+      enabled: ${{ values.autoscaling.enabled }}
+      minReplicas: ${{ values.autoscaling.minReplicas }}
+      maxReplicas: ${{ values.autoscaling.maxReplicas }}
+      targetCPUUtilizationPercentage: ${{ values.autoscaling.targetCPUUtilizationPercentage }}
     resources:
       requests:
-        memory: ${{values.resources.requests.memory}}
-        cpu: ${{values.resources.requests.cpu}}
+        memory: ${{ values.resources.requests.memory }}
+        cpu: ${{ values.resources.requests.cpu }}
       limits:
-        memory: ${{values.resources.limits.memory}}
-        cpu: ${{values.resources.limits.cpu}}
+        memory: ${{ values.resources.limits.memory }}
+        cpu: ${{ values.resources.limits.cpu }}
+    networking:
+      enabled: ${{ values.networking.enabled }}
+      service: ${{ values.networking.service }}
+      port: ${{ values.networking.port }}
+    probe:
+      enabled: ${{ values.probe.enabled }}
+      livenessProbe:
+        path: ${{ values.probe.livenessProbe.path }}
+        port: ${{ values.probe.livenessProbe.port }}
+      readinessProbe:
+        path: ${{ values.probe.readinessProbe.path }}
+        port: ${{ values.probe.readinessProbe.port }}
+    deploy:
+      enabled: ${{ values.probe.enabled }}
+    sa:
+      enabled: ${{ values.sa.enabled }}
+    quota:
+      enabled: ${{ values.quota.enabled }}
+      requests:
+        memory: ${{ values.quota.requests.memory }}
+        cpu: ${{ values.quota.requests.cpu }}
+      limits:
+        memory: ${{ values.quota.limits.memory }}
+        cpu: ${{ values.quota.limits.cpu }}
