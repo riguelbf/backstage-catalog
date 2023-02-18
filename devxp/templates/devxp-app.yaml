@@ -185,7 +185,7 @@ spec:
                       type: string
                       default: 100m
 
-            networking:
+            network:
               title: Networking
               description: Network Settings
               properties:
@@ -202,7 +202,7 @@ spec:
                   enum:
                     - devxp-tech.io
                     - diegoluisi.eti.br
-                service:
+                type:
                   title: Service Type
                   description: Service Type
                   type: string
@@ -440,11 +440,11 @@ spec:
             limits:
               memory: ${{ parameters.kubernetes.resources.limits.memory }}
               cpu: ${{ parameters.kubernetes.resources.limits.cpu }}
-          networking:
-            enabled: ${{ parameters.kubernetes.networking.enabled }}
-            domain: ${{ parameters.kubernet.networking.domain }}
-            service: ${{ parameters.kubernetes.networking.service }}
-            port: ${{ parameters.kubernetes.networking.port }}
+          network:
+            enabled: ${{ parameters.kubernetes.network.enabled }}
+            domain: ${{ parameters.kubernet.network.domain }}
+            type: ${{ parameters.kubernetes.network.type }}
+            port: ${{ parameters.kubernetes.network.port }}
           probe:
             enabled: ${{ parameters.kubernetes.probe.enabled }}
             livenessProbe:
@@ -520,11 +520,11 @@ spec:
             limits:
               memory: ${{ parameters.kubernetes.resources.limits.memory }}
               cpu: ${{ parameters.kubernetes.resources.limits.cpu }}
-          networking:
-            enabled: ${{ parameters.kubernetes.networking.enabled }}
-            domain: ${{ parameters.kubernet.networking.domain }}
-            service: ${{ parameters.kubernetes.networking.service }}
-            port: ${{ parameters.kubernetes.networking.port }}
+          network:
+            enabled: ${{ parameters.kubernetes.network.enabled }}
+            domain: ${{ parameters.kubernet.network.domain }}
+            service: ${{ parameters.kubernetes.network.service }}
+            port: ${{ parameters.kubernetes.network.port }}
           probe:
             enabled: ${{ parameters.kubernetes.probe.enabled }}
             livenessProbe:

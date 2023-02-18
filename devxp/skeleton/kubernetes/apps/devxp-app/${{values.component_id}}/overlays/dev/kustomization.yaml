@@ -24,11 +24,12 @@ helmCharts:
       limits:
         memory: ${{ values.resources.limits.memory }}
         cpu: ${{ values.resources.limits.cpu }}
-    networking:
-      enabled: ${{ values.networking.enabled }}
-      domain: ${{ values.networking.domain }}
-      service: ${{ values.networking.service }}
-      port: ${{ values.networking.port }}
+    network:
+      enabled: ${{ values.network.enabled }}
+      domain: ${{ values.network.domain }}
+      service:
+        type: ${{ values.network.service.type }}
+        port: ${{ values.network.service.port }}
     probe:
       enabled: ${{ values.probe.enabled }}
       livenessProbe:
