@@ -28,8 +28,8 @@ helmCharts:
       enabled: ${{ values.network.enabled }}
       domain: ${{ values.network.domain }}
       service:
-        type: ${{ values.network.service.type }}
-        port: ${{ values.network.service.port }}
+        type: ${{ values.network.type }}
+        port: ${{ values.network.port }}
     probe:
       enabled: ${{ values.probe.enabled }}
       livenessProbe:

@@ -442,7 +442,7 @@ spec:
               cpu: ${{ parameters.kubernetes.resources.limits.cpu }}
           network:
             enabled: ${{ parameters.kubernetes.network.enabled }}
-            domain: ${{ parameters.kubernet.network.domain }}
+            domain: ${{ parameters.kubernetes.network.domain }}
             type: ${{ parameters.kubernetes.network.type }}
             port: ${{ parameters.kubernetes.network.port }}
           probe:
@@ -522,7 +522,7 @@ spec:
               cpu: ${{ parameters.kubernetes.resources.limits.cpu }}
           network:
             enabled: ${{ parameters.kubernetes.network.enabled }}
-            domain: ${{ parameters.kubernet.network.domain }}
+            domain: ${{ parameters.kubernetes.network.domain }}
             service: ${{ parameters.kubernetes.network.service }}
             port: ${{ parameters.kubernetes.network.port }}
           probe:
