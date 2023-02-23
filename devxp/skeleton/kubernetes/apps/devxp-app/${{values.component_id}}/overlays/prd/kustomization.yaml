@@ -1,8 +1,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: ${{values.component_id}}
 resources:
 - ../../base
 helmCharts:
+{%- if values.kubernetes.enabled %}
 - name: devxp-app
   releaseName: devxp-app
   version: 0.1.62
@@ -13,40 +15,58 @@ helmCharts:
       repository: ghcr.io/devxp-tech/${{values.component_id}}
       tag: latest
     autoscaling:
-      enabled: ${{ values.autoscaling.enabled }}
-      minReplicas: ${{ values.autoscaling.minReplicas }}
-      maxReplicas: ${{ values.autoscaling.maxReplicas }}
-      targetCPUUtilizationPercentage: ${{ values.autoscaling.targetCPUUtilizationPercentage }}
+      enabled: ${{ values.kubernetes.autoscaling.enabled }}
+      minReplicas: ${{ values.kubernetes.autoscaling.minReplicas }}
+      maxReplicas: ${{ values.kubernetes.autoscaling.maxReplicas }}
+      targetCPUUtilizationPercentage: ${{ values.kubernetes.autoscaling.targetCPUUtilizationPercentage }}
     resources:
       requests:
-        memory: ${{ values.resources.requests.memory }}
-        cpu: ${{ values.resources.requests.cpu }}
+        memory: ${{ values.kubernetes.resources.requests.memory }}
+        cpu: ${{ values.kubernetes.resources.requests.cpu }}
       limits:
-        memory: ${{ values.resources.limits.memory }}
-        cpu: ${{ values.resources.limits.cpu }}
+        memory: ${{ values.kubernetes.resources.limits.memory }}
+        cpu: ${{ values.kubernetes.resources.limits.cpu }}
     network:
-      enabled: ${{ values.network.enabled }}
-      domain: ${{ values.network.domain }}
+      enabled: ${{ values.kubernetes.network.enabled }}
+      domain: ${{ values.kubernetes.network.domain }}
       service:
-        type: ${{ values.network.type }}
-        port: ${{ values.network.port }}
+        type: ${{ values.kubernetes.network.type }}
+        port: ${{ values.kubernetes.network.port }}
     probe:
-      enabled: ${{ values.probe.enabled }}
+      enabled: ${{ values.kubernetes.probe.enabled }}
       livenessProbe:
-        path: ${{ values.probe.livenessProbe.path }}
-        port: ${{ values.probe.livenessProbe.port }}
+        path: ${{ values.kubernetes.probe.livenessProbe.path }}
+        port: ${{ values.kubernetes.probe.livenessProbe.port }}
       readinessProbe:
-        path: ${{ values.probe.readinessProbe.path }}
-        port: ${{ values.probe.readinessProbe.port }}
+        path: ${{ values.kubernetes.probe.readinessProbe.path }}
+        port: ${{ values.kubernetes.probe.readinessProbe.port }}
     deploy:
-      enabled: ${{ values.probe.enabled }}
+      enabled: ${{ values.kubernetes.probe.enabled }}
     sa:
-      enabled: ${{ values.sa.enabled }}
+      enabled: ${{ values.kubernetes.sa.enabled }}
     quota:
-      enabled: ${{ values.quota.enabled }}
+      enabled: ${{ values.kubernetes.quota.enabled }}
       requests:
-        memory: ${{ values.quota.requests.memory }}
-        cpu: ${{ values.quota.requests.cpu }}
+        memory: ${{ values.kubernetes.quota.requests.memory }}
+        cpu: ${{ values.kubernetes.quota.requests.cpu }}
       limits:
-        memory: ${{ values.quota.limits.memory }}
-        cpu: ${{ values.quota.limits.cpu }}
+        memory: ${{ values.kubernetes.quota.limits.memory }}
+        cpu: ${{ values.kubernetes.quota.limits.cpu }}
+{%- endif %}
+
+{%- if values.infra.enabled %}
+- name: devxp-infra
+  releaseName: devxp-infra
+  version: 0.0.3
+  repo: https://devxp-tech.github.io/helm-charts
+  valuesInline:
+    name: ${{values.component_id}}
+  {%- if values.infra.Bucket.enabled %}
+    Bucket:
+      enabled: true
+  {%- endif %}
+  {%- if values.infra.RDSInstance.enabled %}
+    RDSInstance:
+      enabled: true
+  {%- endif %}
+{%- endif %}
