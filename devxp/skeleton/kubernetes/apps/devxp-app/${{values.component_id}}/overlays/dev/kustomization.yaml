@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - ../../base
 helmCharts:
+{%- if values.kubernetes.enabled %}
 - name: devxp-app
   releaseName: devxp-app
   version: 0.1.62
@@ -50,16 +51,23 @@ helmCharts:
       limits:
         memory: ${{ values.quota.limits.memory }}
         cpu: ${{ values.quota.limits.cpu }}
+{%- endif %}
 
-{%- if values.infra.bucket.enabled %}
+{%- if values.infra.enabled %}
 - name: devxp-infra
   releaseName: devxp-infra
   version: 0.0.3
   repo: https://devxp-tech.github.io/helm-charts
   valuesInline:
-    name: "backstage"
-    bucket:
+    name: ${{values.component_id}}
+  {%- if values.infra.Bucket.enabled %}
+    Bucket:
       enabled: true
+  {%- endif %}
+  {%- if values.infra.RDSInstance.enabled %}
+    RDSInstance:
+      enabled: true
+  {%- endif %}
 {%- endif %}
 
 

@@ -97,14 +97,14 @@ spec:
             # allowedRepos:
             #   - ${{ parameters.component_id }}
 
-    - title: Deployment Parameters
+    - title: Kubernetes Parameters
       description: Set Kubernetes Deployment parameterts
       properties:
         kubernetes:
           title: Enable Kubernetes Deployment
           description: Checking this will also create Kubernetes Deployment
           properties:
-            status:
+            enabled:
               title: enabled
               description: Checking this will also create Kubernetes Deployment
               type: boolean
@@ -327,13 +327,13 @@ spec:
           title: Create Infrastructure Resources
           description: Checking this will also create Infrastrcuture Resources
           properties:
-            status:
+            enabled:
               title: enabled
               description: Checking this will also create Infrastructure Resorces
               type: boolean
               default: false
 
-            bucket:
+            Bucket:
               title: AWS S3 Bucket
               description: An Bucket is a managed resource that represents an AWS S3 Bucket.
               properties:
@@ -366,7 +366,7 @@ spec:
                   title: Enable RDSInstance
                   description: Create RDSInstance
                   type: boolean
-                  default: true
+                  default: false
                 allocatedStorage:
                   title: allocatedStorage
                   description: allocatedStorage
@@ -412,7 +412,7 @@ spec:
   steps:
     - id: template
       name: Fetch Application Template
-      if: ${{ parameters.kubernetes.status == true }}
+      if: ${{ parameters.kubernetes.enabled == true }}
       action: fetch:template
       cookiecutterCompat: true
       input:
@@ -469,7 +469,7 @@ spec:
     - id: fetch-kubernetes
       name: Fetch Kubernetes Templates
       action: fetch:template
-      if: ${{ parameters.kubernetes.status == true }}
+      if: ${{ parameters.kubernetes.enabled == true }}
       input:
         targetPath: ./kubernetes
         url: https://github.com/devxp-tech/backstage-catalog/tree/main/devxp/skeleton/kubernetes/apps/devxp-app
@@ -517,14 +517,16 @@ spec:
               memory: ${{ parameters.kubernetes.quota.limits.memory }}
               cpu: ${{ parameters.kubernetes.quota.limits.cpu }}
           infra:
-            bucket:
-              enabled: ${{ parameters.infra.bucket.enabled }}
+            Bucket:
+              enabled: ${{ parameters.infra.Bucket.enabled }}
+            RDSInstance:
+              enabled: ${{ parameters.infra.RDSInstance.enabled }}
 
 
     - id: gitops
       name: "Open PR in GitOps Repository"
       action: publish:github:pull-request
-      if: ${{ parameters.kubernetes.status == true }}
+      if: ${{ parameters.kubernetes.enabled == true }}
       input:
         repoUrl: github.com?repo=gitops&owner=devxp-tech
         branchName: create-${{ parameters.component_id }}
