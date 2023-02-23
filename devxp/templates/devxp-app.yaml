@@ -519,15 +519,7 @@ spec:
           infra:
             bucket:
               enabled: ${{ parameters.infra.bucket.enabled }}
-              elements:
-              - name: devxp-infra
-                releaseName: devxp-infra
-                version: 0.0.3
-                repo: https://devxp-tech.github.io/helm-charts
-                valuesInline:
-                  name: "backstage"
-                  bucket:
-                    enabled: true
+
 
     - id: gitops
       name: "Open PR in GitOps Repository"
