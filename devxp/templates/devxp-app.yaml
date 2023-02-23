@@ -478,45 +478,47 @@ spec:
           description: ${{ parameters.description }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
-          env: dev
-          autoscaling:
-            enabled: ${{ parameters.kubernetes.autoscaling.enabled }}
-            minReplicas: ${{ parameters.kubernetes.autoscaling.minReplicas }}
-            maxReplicas: ${{ parameters.kubernetes.autoscaling.maxReplicas }}
-            targetCPUUtilizationPercentage: ${{ parameters.kubernetes.autoscaling.targetCPUUtilizationPercentage }}
-          resources:
-            requests:
-              memory: ${{ parameters.kubernetes.resources.requests.memory }}
-              cpu: ${{ parameters.kubernetes.resources.requests.cpu }}
-            limits:
-              memory: ${{ parameters.kubernetes.resources.limits.memory }}
-              cpu: ${{ parameters.kubernetes.resources.limits.cpu }}
-          network:
-            enabled: ${{ parameters.kubernetes.network.enabled }}
-            domain: ${{ parameters.kubernetes.network.domain }}
-            type: ${{ parameters.kubernetes.network.type }}
-            port: ${{ parameters.kubernetes.network.port }}
-          probe:
-            enabled: ${{ parameters.kubernetes.probe.enabled }}
-            livenessProbe:
-              path: ${{ parameters.kubernetes.probe.livenessProbe.path }}
-              port: ${{ parameters.kubernetes.probe.livenessProbe.port }}
-            readinessProbe:
-              path: ${{ parameters.kubernetes.probe.readinessProbe.path }}
-              port: ${{ parameters.kubernetes.probe.readinessProbe.port }}
-          deploy:
-            enabled: ${{ parameters.kubernetes.probe.enabled }}
-          sa:
-            enabled: ${{ parameters.kubernetes.sa.enabled }}
-          quota:
-            enabled: ${{ parameters.kubernetes.quota.enabled }}
-            requests:
-              memory: ${{ parameters.kubernetes.quota.requests.memory }}
-              cpu: ${{ parameters.kubernetes.quota.requests.cpu }}
-            limits:
-              memory: ${{ parameters.kubernetes.quota.limits.memory }}
-              cpu: ${{ parameters.kubernetes.quota.limits.cpu }}
+          kubernetes:
+            enabled: ${{ parameters.kubernetes.enabled }}
+            autoscaling:
+              enabled: ${{ parameters.kubernetes.autoscaling.enabled }}
+              minReplicas: ${{ parameters.kubernetes.autoscaling.minReplicas }}
+              maxReplicas: ${{ parameters.kubernetes.autoscaling.maxReplicas }}
+              targetCPUUtilizationPercentage: ${{ parameters.kubernetes.autoscaling.targetCPUUtilizationPercentage }}
+            resources:
+              requests:
+                memory: ${{ parameters.kubernetes.resources.requests.memory }}
+                cpu: ${{ parameters.kubernetes.resources.requests.cpu }}
+              limits:
+                memory: ${{ parameters.kubernetes.resources.limits.memory }}
+                cpu: ${{ parameters.kubernetes.resources.limits.cpu }}
+            network:
+              enabled: ${{ parameters.kubernetes.network.enabled }}
+              domain: ${{ parameters.kubernetes.network.domain }}
+              type: ${{ parameters.kubernetes.network.type }}
+              port: ${{ parameters.kubernetes.network.port }}
+            probe:
+              enabled: ${{ parameters.kubernetes.probe.enabled }}
+              livenessProbe:
+                path: ${{ parameters.kubernetes.probe.livenessProbe.path }}
+                port: ${{ parameters.kubernetes.probe.livenessProbe.port }}
+              readinessProbe:
+                path: ${{ parameters.kubernetes.probe.readinessProbe.path }}
+                port: ${{ parameters.kubernetes.probe.readinessProbe.port }}
+            deploy:
+              enabled: ${{ parameters.kubernetes.probe.enabled }}
+            sa:
+              enabled: ${{ parameters.kubernetes.sa.enabled }}
+            quota:
+              enabled: ${{ parameters.kubernetes.quota.enabled }}
+              requests:
+                memory: ${{ parameters.kubernetes.quota.requests.memory }}
+                cpu: ${{ parameters.kubernetes.quota.requests.cpu }}
+              limits:
+                memory: ${{ parameters.kubernetes.quota.limits.memory }}
+                cpu: ${{ parameters.kubernetes.quota.limits.cpu }}
           infra:
+            enabled: ${{ parameters.infra.enabled }}
             Bucket:
               enabled: ${{ parameters.infra.Bucket.enabled }}
             RDSInstance:
