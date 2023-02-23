@@ -51,4 +51,4 @@ helmCharts:
         memory: ${{ values.quota.limits.memory }}
         cpu: ${{ values.quota.limits.cpu }}
 
-${{ values.infra.bucket.elements if values.infra.bucket.enabled }}
+${{ yaml values.infra.bucket.elements if values.infra.bucket.enabled }}
