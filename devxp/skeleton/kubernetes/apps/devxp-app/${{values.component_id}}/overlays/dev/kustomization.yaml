@@ -51,12 +51,4 @@ helmCharts:
         memory: ${{ values.quota.limits.memory }}
         cpu: ${{ values.quota.limits.cpu }}
 
-${{ if values.infra.bucket.enabled }}:
-- name: devxp-infra
-  releaseName: devxp-infra
-  version: 0.0.3
-  repo: https://devxp-tech.github.io/helm-charts
-  valuesInline:
-    name: "backstage"
-    bucket:
-      enabled: true
+$yaml: ${{ values.infra.bucket.elements if values.infra.bucket.enabled }}
