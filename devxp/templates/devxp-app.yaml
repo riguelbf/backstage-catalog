@@ -333,7 +333,7 @@ spec:
               type: boolean
               default: false
 
-            Bucket:
+            bucket:
               title: AWS S3 Bucket
               description: An Bucket is a managed resource that represents an AWS S3 Bucket.
               properties:
@@ -427,44 +427,6 @@ spec:
           owner: ${{ parameters.owner }}
           lifecycle: ${{ parameters.lifecycle }}
           type: ${{ parameters.type }}
-          env: dev
-          autoscaling:
-            enabled: ${{ parameters.kubernetes.autoscaling.enabled }}
-            minReplicas: ${{ parameters.kubernetes.autoscaling.minReplicas }}
-            maxReplicas: ${{ parameters.kubernetes.autoscaling.maxReplicas }}
-            targetCPUUtilizationPercentage: ${{ parameters.kubernetes.autoscaling.targetCPUUtilizationPercentage }}
-          resources:
-            requests:
-              memory: ${{ parameters.kubernetes.resources.requests.memory }}
-              cpu: ${{ parameters.kubernetes.resources.requests.cpu }}
-            limits:
-              memory: ${{ parameters.kubernetes.resources.limits.memory }}
-              cpu: ${{ parameters.kubernetes.resources.limits.cpu }}
-          network:
-            enabled: ${{ parameters.kubernetes.network.enabled }}
-            domain: ${{ parameters.kubernetes.network.domain }}
-            type: ${{ parameters.kubernetes.network.type }}
-            port: ${{ parameters.kubernetes.network.port }}
-          probe:
-            enabled: ${{ parameters.kubernetes.probe.enabled }}
-            livenessProbe:
-              path: ${{ parameters.kubernetes.probe.livenessProbe.path }}
-              port: ${{ parameters.kubernetes.probe.livenessProbe.port }}
-            readinessProbe:
-              path: ${{ parameters.kubernetes.probe.readinessProbe.path }}
-              port: ${{ parameters.kubernetes.probe.readinessProbe.port }}
-          deploy:
-            enabled: ${{ parameters.kubernetes.probe.enabled }}
-          sa:
-            enabled: ${{ parameters.kubernetes.sa.enabled }}
-          quota:
-            enabled: ${{ parameters.kubernetes.quota.enabled }}
-            requests:
-              memory: ${{ parameters.kubernetes.quota.requests.memory }}
-              cpu: ${{ parameters.kubernetes.quota.requests.cpu }}
-            limits:
-              memory: ${{ parameters.kubernetes.quota.limits.memory }}
-              cpu: ${{ parameters.kubernetes.quota.limits.cpu }}
 
 
     - id: publish
@@ -554,6 +516,18 @@ spec:
             limits:
               memory: ${{ parameters.kubernetes.quota.limits.memory }}
               cpu: ${{ parameters.kubernetes.quota.limits.cpu }}
+          infra:
+            bucket:
+              enabled: ${{ parameters.infra.bucket.enabled }}
+              elements:
+              - name: devxp-infra
+                releaseName: devxp-infra
+                version: 0.0.3
+                repo: https://devxp-tech.github.io/helm-charts
+                valuesInline:
+                  name: "backstage"
+                  bucket:
+                    enabled: true
 
     - id: gitops
       name: "Open PR in GitOps Repository"
