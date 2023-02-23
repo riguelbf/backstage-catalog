@@ -212,9 +212,9 @@ spec:
                     - LoadBalancer
                 port:
                   title: Port
-                  description: Application Port
+                  description: Service Port
                   type: integer
-                  default: 8080
+                  default: 80
 
             probe:
               title: Health Check
@@ -523,7 +523,7 @@ spec:
           network:
             enabled: ${{ parameters.kubernetes.network.enabled }}
             domain: ${{ parameters.kubernetes.network.domain }}
-            service: ${{ parameters.kubernetes.network.service }}
+            type: ${{ parameters.kubernetes.network.type }}
             port: ${{ parameters.kubernetes.network.port }}
           probe:
             enabled: ${{ parameters.kubernetes.probe.enabled }}

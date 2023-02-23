@@ -1,0 +1,52 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base
+helmCharts:
+- name: devxp-app
+  releaseName: devxp-app
+  version: 0.1.62
+  repo: https://devxp-tech.github.io/helm-charts
+  valuesInline:
+    name: ${{values.component_id}}
+    image:
+      repository: ghcr.io/devxp-tech/${{values.component_id}}
+      tag: latest
+    autoscaling:
+      enabled: ${{ values.autoscaling.enabled }}
+      minReplicas: ${{ values.autoscaling.minReplicas }}
+      maxReplicas: ${{ values.autoscaling.maxReplicas }}
+      targetCPUUtilizationPercentage: ${{ values.autoscaling.targetCPUUtilizationPercentage }}
+    resources:
+      requests:
+        memory: ${{ values.resources.requests.memory }}
+        cpu: ${{ values.resources.requests.cpu }}
+      limits:
+        memory: ${{ values.resources.limits.memory }}
+        cpu: ${{ values.resources.limits.cpu }}
+    network:
+      enabled: ${{ values.network.enabled }}
+      domain: ${{ values.network.domain }}
+      service:
+        type: ${{ values.network.type }}
+        port: ${{ values.network.port }}
+    probe:
+      enabled: ${{ values.probe.enabled }}
+      livenessProbe:
+        path: ${{ values.probe.livenessProbe.path }}
+        port: ${{ values.probe.livenessProbe.port }}
+      readinessProbe:
+        path: ${{ values.probe.readinessProbe.path }}
+        port: ${{ values.probe.readinessProbe.port }}
+    deploy:
+      enabled: ${{ values.probe.enabled }}
+    sa:
+      enabled: ${{ values.sa.enabled }}
+    quota:
+      enabled: ${{ values.quota.enabled }}
+      requests:
+        memory: ${{ values.quota.requests.memory }}
+        cpu: ${{ values.quota.requests.cpu }}
+      limits:
+        memory: ${{ values.quota.limits.memory }}
+        cpu: ${{ values.quota.limits.cpu }}
