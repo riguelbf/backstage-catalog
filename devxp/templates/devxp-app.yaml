@@ -478,6 +478,10 @@ spec:
         repoUrl: ${{ parameters.repoUrl }}
         defaultBranch: main
         repoVisibility: public
+        deleteBranchOnMerge: true
+        allowMergeCommit: false
+        allowSquashMerge: true
+        allowRebaseMerge: false
         protectEnforceAdmins: false
         collaborators:
           - team: sre-team
