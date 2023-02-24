@@ -531,14 +531,17 @@ spec:
       if: ${{ parameters.kubernetes.enabled == true }}
       input:
         repoUrl: github.com?repo=gitops&owner=devxp-tech
-        branchName: create-${{ parameters.component_id }}
+        branchName: backstage/${{ parameters.component_id }}
         title: ':robot: [backstage-bot] Create new App ${{ parameters.component_id }}'
         description: |
           # ✨ New project: ${{ parameters.component_id }}
           🤖 This project is created by [Backstage](https://backstage.diegoluisi.eti.br/catalog/default/component/${{ parameters.component_id }})
+
           📝 ${{ parameters.description if parameters.description }}
 
-          🚀 Mr. SRE @devxp-tech/sre-team, please aprrove this PR to create our project.
+          👨‍🚀 Mr. SRE @devxp-tech/sre-team, please aprrove this PR to create our project.
+
+          🚀 Run this workflow [First Release](https://github.com/devxp-tech/${{ parameters.component_id }}/actions/workflows/first-release.yaml) to create our first deploy.
         sourcePath: kubernetes
         targetPath: apps
 
