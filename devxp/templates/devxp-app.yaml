@@ -110,22 +110,22 @@ spec:
               type: boolean
               default: true
 
-            env:
-              title: Environment
-              description: 'Environment to create resources'
-              properties:
-                name:
-                  title: Select environments
-                  type: array
-                  items:
-                    type: string
-                    default: development
-                    enum:
-                      - development
-                      - staging
-                      - production
-                  uniqueItems: true
-                  ui:widget: checkboxes
+            # env:
+            #   title: Environment
+            #   description: 'Environment to create resources'
+            #   properties:
+            #     name:
+            #       title: Select environments
+            #       type: array
+            #       items:
+            #         type: string
+            #         default: development
+            #         enum:
+            #           - development
+            #           - staging
+            #           - production
+            #       uniqueItems: true
+            #       ui:widget: checkboxes
 
             autoscaling:
               title: Autoscaling
@@ -427,6 +427,7 @@ spec:
           owner: ${{ parameters.owner }}
           lifecycle: ${{ parameters.lifecycle }}
           type: ${{ parameters.type }}
+          env: dev
           kubernetes:
             network:
               domain: ${{ parameters.kubernetes.network.domain }}
