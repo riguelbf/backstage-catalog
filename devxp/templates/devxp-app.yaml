@@ -427,6 +427,9 @@ spec:
           owner: ${{ parameters.owner }}
           lifecycle: ${{ parameters.lifecycle }}
           type: ${{ parameters.type }}
+          kubernetes:
+            network:
+              domain: ${{ parameters.kubernetes.network.domain }}
 
 
     - id: publish
