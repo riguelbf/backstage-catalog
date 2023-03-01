@@ -536,7 +536,7 @@ spec:
       input:
         repoUrl: github.com?repo=gitops&owner=devxp-tech
         branchName: backstage/${{ parameters.component_id }}
-        title: ':robot: [backstage-bot] Create new App ${{ parameters.component_id }}'
+        title: '[ci skip] :robot: Create new App ${{ parameters.component_id }}'
         description: |
           # ✨ New project: ${{ parameters.component_id }}
           🤖 This project is created by [Backstage](https://backstage.diegoluisi.eti.br/catalog/default/component/${{ parameters.component_id }})
