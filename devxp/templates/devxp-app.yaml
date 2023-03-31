@@ -479,15 +479,6 @@ spec:
         # gitAuthorEmail: bot@devxp-tech.io
         # gitCommitMessage: ":robot: First Commit"
 
-    - id: run-first-release
-      name: Run First Release
-      action: github:actions:dispatch
-      if: ${{ parameters.dryRun !== true }}
-      input:
-        repoUrl: "github.com?repo=${{ parameters.component_id }}&owner=devxp-tech"
-        workflowId: first-release.yaml
-        branchOrTagName: "main"
-
     - id: fetch-kubernetes
       name: Fetch Kubernetes Templates
       action: fetch:template
@@ -574,6 +565,15 @@ spec:
       input:
         repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
         catalogInfoPath: "/catalog-info.yaml"
+
+    - id: run-first-release
+      name: Run First Release
+      action: github:actions:dispatch
+      if: ${{ parameters.dryRun !== true }}
+      input:
+        repoUrl: github.com?repo=${{ parameters.component_id }}&owner=devxp-tech
+        workflowId: first-release.yaml
+        branchOrTagName: main
 
     # - name: Results
     #   if: ${{ parameters.dryRun }}
