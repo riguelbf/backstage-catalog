@@ -484,7 +484,7 @@ spec:
       action: github:actions:dispatch
       if: ${{ parameters.dryRun !== true }}
       input:
-        repoUrl: "github.com?repo=${{ parameters.component_id }}&owner=${{ parameters.owner }}"
+        repoUrl: "github.com?repo=${{ parameters.component_id }}&owner=devxp-tech"
         workflowId: first-release.yaml
         branchOrTagName: "main"
 
