@@ -466,9 +466,9 @@ spec:
           - ${{ parameters.language }}
           - ${{ parameters.owner }}
           - ${{ parameters.system }}
-        gitAuthorName: ":robot: backstage-bot"
-        gitAuthorEmail: bot@devxp-tech.io
-        gitCommitMessage: ":robot: First Commit"
+        # gitAuthorName: ":robot: backstage-bot"
+        # gitAuthorEmail: bot@devxp-tech.io
+        # gitCommitMessage: ":robot: First Commit"
 
     - id: fetch-kubernetes
       name: Fetch Kubernetes Templates
