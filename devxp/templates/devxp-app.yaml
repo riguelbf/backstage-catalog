@@ -35,6 +35,14 @@ spec:
           title: Description
           type: string
           description: Help others understand what this website is for.
+        repoVisibility:
+          title: Set Repository Visibility
+          type: string
+          description: Set the visibility of repositorie.
+          default: public
+          enum:
+            - public
+            - internal
         language:
           title: Language
           description: 'Application Language'
@@ -443,7 +451,7 @@ spec:
         description: This is ${{ parameters.component_id }}
         repoUrl: ${{ parameters.repoUrl }}
         defaultBranch: main
-        repoVisibility: public
+        repoVisibility: ${{ parameters.repoVisibility }}
         deleteBranchOnMerge: true
         allowMergeCommit: false
         allowSquashMerge: true
@@ -469,6 +477,15 @@ spec:
         # gitAuthorName: ":robot: backstage-bot"
         # gitAuthorEmail: bot@devxp-tech.io
         # gitCommitMessage: ":robot: First Commit"
+
+    - id: run-first-release
+      name: Run First Release
+      action: github:actions:dispatch
+      if: ${{ parameters.dryRun !== true }}
+      input:
+        repoUrl: ${{ parameters.repoUrl }}
+        workflowId: first-release.yaml
+        branchOrTagName: "main"
 
     - id: fetch-kubernetes
       name: Fetch Kubernetes Templates
