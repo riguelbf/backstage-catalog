@@ -474,6 +474,7 @@ spec:
           - ${{ parameters.language }}
           - ${{ parameters.owner }}
           - ${{ parameters.system }}
+        token: ${{ secrets.USER_OAUTH_TOKEN }}
         # gitAuthorName: ":robot: backstage-bot"
         # gitAuthorEmail: bot@devxp-tech.io
         # gitCommitMessage: ":robot: First Commit"
