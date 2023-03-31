@@ -433,7 +433,7 @@ spec:
           description: ${{ parameters.description }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           appGroup: ${{ parameters.appGroup }}
-          appGroup: ${{ parameters.appGroup }}
+          owner: ${{ parameters.owner }}
           lifecycle: ${{ parameters.lifecycle }}
           type: ${{ parameters.type }}
           env: dev
