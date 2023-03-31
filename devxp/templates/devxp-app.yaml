@@ -483,7 +483,7 @@ spec:
       action: github:actions:dispatch
       if: ${{ parameters.dryRun !== true }}
       input:
-        repoUrl: ${{ parameters.repoUrl }}
+        repoUrl: "github.com?repo=${{ parameters.component_id }}&owner=${{ parameters.owner }}"
         workflowId: first-release.yaml
         branchOrTagName: "main"
 
