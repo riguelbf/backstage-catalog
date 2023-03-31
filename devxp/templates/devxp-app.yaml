@@ -21,7 +21,7 @@ spec:
         - component_id
         - system
         - lifecycle
-        - owner
+        - appGroup
         - type
       properties:
         component_id:
@@ -79,8 +79,8 @@ spec:
             - service
             - website
             - library
-        owner:
-          title: Owner
+        appGroup:
+          title: Application Owner Group
           type: string
           description: Owner of the component
           ui:field: OwnerPicker
@@ -432,7 +432,8 @@ spec:
           system: ${{ parameters.system }}
           description: ${{ parameters.description }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
-          owner: ${{ parameters.owner }}
+          appGroup: ${{ parameters.appGroup }}
+          appGroup: ${{ parameters.appGroup }}
           lifecycle: ${{ parameters.lifecycle }}
           type: ${{ parameters.type }}
           env: dev
@@ -467,12 +468,12 @@ spec:
             access: maintain
           - team: dba-team
             access: write
-          - team: ${{ parameters.owner }}
+          - team: ${{ parameters.appGroup }}
             access: push
         topics:
           - ${{ parameters.lifecycle }}
           - ${{ parameters.language }}
-          - ${{ parameters.owner }}
+          - ${{ parameters.appGroup }}
           - ${{ parameters.system }}
         token: ${{ secrets.USER_OAUTH_TOKEN }}
         # gitAuthorName: ":robot: backstage-bot"
@@ -490,7 +491,7 @@ spec:
           component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
-          owner: ${{ parameters.owner }}
+          appGroup: ${{ parameters.appGroup }}
           kubernetes:
             enabled: ${{ parameters.kubernetes.enabled }}
             autoscaling:
