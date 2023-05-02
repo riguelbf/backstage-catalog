@@ -470,12 +470,7 @@ spec:
             access: write
           - team: ${{ parameters.appGroup }}
             access: push
-        topics:
-          - ${{ parameters.lifecycle }}
-          - ${{ parameters.language }}
-          - ${{ parameters.appGroup }}
-          - ${{ parameters.system }}
-          - 'backstage-include'
+        topics: ['backstage-include', '${{ parameters.lifecycle }}', '${{ parameters.language }}', '${{ parameters.appGroup }}', '${{ parameters.system }}']
         # token: ${{ secrets.USER_OAUTH_TOKEN }}
         # gitAuthorName: ":robot: backstage-bot"
         # gitAuthorEmail: bot@devxp-tech.io
