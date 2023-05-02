@@ -486,7 +486,7 @@ spec:
       if: ${{ parameters.kubernetes.enabled == true }}
       input:
         targetPath: ./kubernetes
-        url: https://github.com/devxp-tech/backstage-catalog/tree/main/devxp/skeleton/kubernetes/apps/devxp-app
+        url: https://github.com/devxp-tech/backstage-skeleton/tree/main/devxp/skeleton/kubernetes/apps/devxp-app
         values:
           component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
