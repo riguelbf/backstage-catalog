@@ -475,7 +475,8 @@ spec:
           - ${{ parameters.language }}
           - ${{ parameters.appGroup }}
           - ${{ parameters.system }}
-        token: ${{ secrets.USER_OAUTH_TOKEN }}
+          - 'backstage-include'
+        # token: ${{ secrets.USER_OAUTH_TOKEN }}
         # gitAuthorName: ":robot: backstage-bot"
         # gitAuthorEmail: bot@devxp-tech.io
         # gitCommitMessage: ":robot: First Commit"
